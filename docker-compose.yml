@@ -4,7 +4,7 @@ services:
     container_name: 0din
     image: artemisarrow/0din-docker:testing
     volumes:
-      - shared-data:/the/directory/to/be/shared
+      - ${SHARED_DIRECTORY}:${SHARED_DIRECTORY}
     environment:
       - NODE_ID=${NODE_ID} 
       - NODE_PORT=${NODE_PORT}
@@ -16,6 +16,7 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
+      - SHARED_DIRECTORY=${SHARED_DIRECTORY}
     ports:
       - 5000:5000
     depends_on:
